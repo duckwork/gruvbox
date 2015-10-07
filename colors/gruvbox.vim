@@ -466,7 +466,8 @@ endif
 hi! link NonText GruvboxBg2
 hi! link SpecialKey GruvboxBg2
 
-call s:HL('Visual',    s:none,  s:bg3, s:invert_selection)
+" call s:HL('Visual',    s:none,  s:bg3, s:invert_selection)
+hi! link Visual DiffChange
 hi! link VisualNOS Visual
 
 call s:HL('Search',    s:bg0, s:yellow)
@@ -519,12 +520,14 @@ call s:HL('FoldColumn', s:gray, s:bg1)
 
 " Character under cursor
 call s:HL('Cursor', s:none, s:none, s:inverse)
-" Visual mode cursor, selection
-hi! link vCursor Cursor
-" Input moder cursor
-hi! link iCursor Cursor
 " Language mapping cursor
 hi! link lCursor Cursor
+hi! link nCursor Cursor
+hi! link vCursor DiffChange
+hi! link oCursor Cursor
+hi! link iCursor DiffAdd
+hi! link rCursor DiffDelete
+hi! link cCursor Cursor
 
 " }}}
 " Syntax Highlighting: {{{
@@ -628,14 +631,14 @@ call s:HL('DiffText',   s:yellow, s:bg0, s:inverse)
 if has("spell")
   " Not capitalised word, or compile warnings
   if g:gruvbox_improved_warnings == 0
-    call s:HL('SpellCap',   s:none, s:none, s:undercurl, s:red)
+    call s:HL('SpellCap',   s:none, s:none, s:undercurl, s:blue)
   else
     call s:HL('SpellCap',   s:green, s:none, s:bold . s:italic)
   endif
   " Not recognized word
-  call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:blue)
+  call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:red)
   " Wrong spelling for selected region
-  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:aqua)
+  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:purple)
   " Rare word
   call s:HL('SpellRare',  s:none, s:none, s:undercurl, s:purple)
 endif
